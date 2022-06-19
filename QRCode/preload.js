@@ -1,4 +1,5 @@
-const { contextBridge, ipcRenderer, globalShortcut } = require("electron")
+const { contextBridge, ipcRenderer, Menu, MenumItem, desktopCapture } = require("electron")
+const fs = require("fs")
 
 contextBridge.exposeInMainWorld("ipcRenderer", {
     send: (event, args) => {
@@ -6,8 +7,14 @@ contextBridge.exposeInMainWorld("ipcRenderer", {
     }
 })
 
-contextBridge.exposeInMainWorld("globalShortcut", {
-    register: (event, shortcut) => {
-        globalShortcut.register(event, shortcut)
+contextBridge.exposeInMainWorld("fs", {
+    saveFile: (filePath, data) => {
+        fs.writeFileSync(filePath, data)
     }
+})
+
+contextBridge.exposeInMainWorld("desktopCapture", {
+    capture: ({ types: ["window", "screen"] }) => {
+    desktopCapture.getSources(types).then(async => {
+    }})
 })

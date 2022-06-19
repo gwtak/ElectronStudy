@@ -3,16 +3,17 @@ const path = require("path")
 
 function createMainWindow() {
     const winMain = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 400,
+        height: 300,
         webPreferences: {
             nodeIntegration: true,
+            // 上下文隔离
             // contextIsolation: false,
             preload: path.join(__dirname, "preload.js")
         }
     })
     winMain.loadFile(path.join(__dirname, "main.html"))
-    winMain.webContents.openDevTools()
+    // winMain.webContents.openDevTools()
 }
 
 function createCaptureWindow() {
@@ -31,7 +32,7 @@ function createCaptureWindow() {
     winCapture.webContents.openDevTools()
 }
 
-app.whenReady().then(createCaptureWindow)
+app.whenReady().then(createMainWindow)
 
 ipcMain.on("btnSnapShot", () => {
     console.log("btnSnapShot")

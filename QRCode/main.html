@@ -3,12 +3,62 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>QRCodeScaner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            height: 100vh;
+            /* linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片 */
+            background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+        }
+
+        form {
+            position: relative;
+            top: 20vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div {
+            /* 相对定位 */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
-    <button id="btnSnapShot">截屏</button>
-    <button id="btnScanQRCode">扫码</button>
+    <section>
+        <form>
+            <div>快捷键F2扫码</div>
+            <div>
+                <input id="inputUserName" type="text" placeholder="请输入工号" />
+            </div>
+            <div>
+                <input id="inputPassword" type="password" placeholder="请输入密码" />
+            </div>
+            <div>
+                <input id="inputShowPassword" type="checkbox" />
+                <span>显示密码</span>
+            </div>
+            <div>
+                <input id="inputRemember" type="checkbox" />
+                <span>记住密码</span>
+            </div>
+            <br>
+            <div>
+                <button id="btnSnapShot">截屏</button>
+                <button id="btnScanQRCode">扫码</button>
+            </div>
+        </form>
+    </section>
     <script src="./renderer.js"></script>
 </body>
 

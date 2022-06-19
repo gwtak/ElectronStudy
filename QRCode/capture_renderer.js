@@ -1,3 +1,3 @@
-window.globalShortcut.register("Esc", () => {
-    ipcRenderer.send("quit")
-})
+function snapShot() {
+    
+}
